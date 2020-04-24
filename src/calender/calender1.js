@@ -1,17 +1,29 @@
-
 import React from 'react';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import data from './data.json';
+
+let allSelectedDates = [];
+data.forEach((item) => {
+  allSelectedDates.push(new Date(item.year, item.month, item.day));
+});
+
+const addTitle = () => {
+  data.forEach((ele) => {
+    document.querySelector(`[aria-label="${new Date(ele.year, ele.month, ele.day)
+      .toDateString()}"]`).innerHTML += ele.title
+  });
+}
+
 export default function Example() {
   return (
-    <DayPicker
-      initialMonth={new Date(2020, 4)}
-      selectedDays={[
-        new Date(data[0].year, data[0].month, data[0].day),
-        new Date(data[1].year, data[1].month, data[1].day),
-        new Date(data[2].year, data[2].month, data[2].day),
-      ]}
-    />
+    <div>
+      <button onClick={addTitle}>add</button>
+      <DayPicker
+        initialMonth={new Date(2020, 4)}
+        selectedDays={allSelectedDates}
+
+      />
+    </div>
   );
 }
