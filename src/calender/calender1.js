@@ -41,6 +41,7 @@ const modifiers = {
   highlighted: [new Date(data[1].year, data[1].month, data[1].day),
   new Date(data[0].year, data[0].month, data[0].day),
   new Date(data[3].year, data[3].month, data[3].day),
+  new Date(data[2].year, data[2].month, data[2].day),
 
   ]
 };
